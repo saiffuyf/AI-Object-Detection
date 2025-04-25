@@ -1,0 +1,32 @@
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    <title>Motion Detector</title>
+</head>
+<body>
+    <h1>Live Motion Detection</h1>
+    <img src="{% url 'video_feed' %}" width="700" height="500">
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Motion Detector</title>
+    <script>
+        function toggleDetection() {
+            fetch('/toggle/')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('toggleBtn').innerText = data.is_running ? 'Stop Detection' : 'Start Detection';
+                });
+        }
+    </script>
+</head>
+<body>
+    <h1>Live Motion Detection</h1>
+    <img src="{% url 'video_feed' %}" width="700" height="500">
+    <br>
+    <button id="toggleBtn" onclick="toggleDetection()">Start Detection</button>
+</body>
+</html>
